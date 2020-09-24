@@ -30,7 +30,8 @@ void setup() {
   strip.setBrightness(64); // 31, 63, 95, 127, 159, 191, 223, 255
   strip.show();
 
-  bootSequence();
+  // bootSequence();
+  cylon(80);
 }
 
 void loop() {
@@ -106,6 +107,7 @@ void up(uint32_t color) {
   }
 }
 
+
 // Run a pixel down the strip!
 void down(uint32_t color) {
 
@@ -128,6 +130,46 @@ void blink(int pixel, uint32_t color, int dur) {
   strip.show();
 }
 
+// cylons!
+void cylon(int dur) {
+
+  strip.clear();
+  strip.setPixelColor(0, 138, 55, 82);
+  strip.show();
+  delay(dur);
+
+  strip.clear();
+  strip.setPixelColor(0, 48, 19, 44);
+  strip.setPixelColor(1, 138, 55, 82);
+  strip.show();
+  delay(dur);
+
+  for (int i = 2; i < strip.numPixels(); i++) {
+
+    strip.clear();
+    strip.setPixelColor(i-2, 10, 4, 6);
+    strip.setPixelColor(i-1, 48, 19, 44);
+    strip.setPixelColor(i, 138, 55, 82);
+    strip.show();
+    delay(dur);
+
+  }
+
+  strip.clear();
+  strip.setPixelColor(strip.numPixels()-2, 10, 4, 6);
+  strip.setPixelColor(strip.numPixels()-1, 48, 19, 44);
+  strip.show();
+  delay(dur);
+
+  strip.clear();
+  strip.setPixelColor(strip.numPixels()-1, 10, 4, 6);
+  strip.show();
+  delay(dur);
+
+  strip.clear();
+  strip.show();
+
+}
 // not needed, about to be deleted :-D
 // Rainbow cycle along whole strip. Pass delay time (in ms) between frames.
 // stolen from the neopixel examples
