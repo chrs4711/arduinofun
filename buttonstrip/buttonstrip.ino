@@ -1,4 +1,3 @@
-
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
 #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
@@ -95,8 +94,6 @@ void bootSequence() {
 
   up(color);
   down(color);
-  strip.clear();
-  strip.show();
 }
 
 // Run a pixel up the strip!
@@ -127,7 +124,8 @@ void blink(int pixel, uint32_t color, int dur) {
 
   delay(50);
 
-  strip.clear();
+  strip.setPixelColor(pixel, 0);
+  strip.show();
 }
 
 // not needed, about to be deleted :-D
