@@ -96,6 +96,7 @@ void bootSequence() {
   up(color);
   down(color);
   strip.clear();
+  strip.show();
 }
 
 // Run a pixel up the strip!
